@@ -1,94 +1,58 @@
 import java.util.Scanner;
 
 public class Main {
-    private static double resultado;
-    private static int operacion;
-
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        while (true) {
-            clearScreen();
-            System.out.println("Calculadora Basica");
-            System.out.println("1. Suma");
-            System.out.println("2. Resta");
-            System.out.println("3. Multiplicacion");
-            System.out.println("4. Division");
-            System.out.println("5. Salir");
+        Scanner scanner = new Scanner(System.in);
+        boolean continuar = true;
 
+        while (continuar) {
             try {
-                System.out.print("Seleccione una operacion: ");
-                operacion = sc.nextInt();
+                System.out.println("Seleccione una operación: \n 1. Sumar\n 2. Restar\n 3. Multiplicar\n 4. Dividir\n 5. Salir:");
+                int operacion = Integer.parseInt(scanner.nextLine());
 
+                if (operacion < 1 || operacion > 5) {
+                    System.out.println("Operación no válida. Por favor, seleccione una opción entre 1 y 5.");
+                    continue;
+                }
+
+                if (operacion == 5) {
+                    continuar = false;
+                    continue;
+                }
+
+                System.out.println("Ingrese el primer número:");
+                int num1 = Integer.parseInt(scanner.nextLine());
+
+                System.out.println("Ingrese el segundo número:");
+                int num2 = Integer.parseInt(scanner.nextLine());
+
+                int resultado = 0;
                 switch (operacion) {
                     case 1:
-                        System.out.println("Ingrese el primer valor: ");
-                        double valor1 = sc.nextDouble();
-                        System.out.println("Ingrese el segundo valor: ");
-                        double valor2 = sc.nextDouble();
-                        resultado = suma(valor1, valor2);
-                        System.out.println("El resultado de la suma es: " + resultado);
+                        resultado = Calculadora.sumar(num1, num2);
                         break;
                     case 2:
-                        System.out.println("Ingrese el primer valor: ");
-                        valor1 = sc.nextDouble();
-                        System.out.println("Ingrese el segundo valor: ");
-                        valor2 = sc.nextDouble();
-                        resultado = resta(valor1, valor2);
-                        System.out.println("El resultado de la resta es: " + resultado);
+                        resultado = Calculadora.restar(num1, num2);
                         break;
                     case 3:
-                        System.out.println("Ingrese el primer valor: ");
-                        valor1 = sc.nextDouble();
-                        System.out.println("Ingrese el segundo valor: ");
-                        valor2 = sc.nextDouble();
-                        resultado = multiplicacion(valor1, valor2);
-                        System.out.println("El resultado de la multiplicacion es: " + resultado);
+                        resultado = Calculadora.multiplicar(num1, num2);
                         break;
                     case 4:
-                        System.out.println("Ingrese el primer valor: ");
-                        valor1 = sc.nextDouble();
-                        System.out.println("Ingrese el segundo valor: ");
-                        valor2 = sc.nextDouble();
-                        resultado = division(valor1, valor2);
-                        System.out.println("El resultado de la division es: " + resultado);
-                        break;
-                    case 5:
-                        System.out.println("Saliendo...");
-                        return;
-                    default:
-                        System.out.println("Opcion no valida");
+                        resultado = Calculadora.dividir(num1, num2);
                         break;
                 }
 
-                System.out.println("Presione Enter para continuar...");
-                sc.nextLine();
-                sc.nextLine();
-
-
+                System.out.println("El resultado es: " + resultado);
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Entrada no válida. Por favor, ingrese un número válido.");
+            } catch (ArithmeticException e) {
+                System.out.println("Error: No se puede dividir por cero.");
             } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
-
+                System.out.println("Error: Ocurrió un problema inesperado.");
             }
         }
-    }
 
-    public static void clearScreen() {
-        for (int i = 0; i < 50; ++i) System.out.println();
-    }
-
-    public static double suma(double valor1, double valor2) {
-        return valor1 + valor2;
-    }
-
-    public static double resta(double valor1, double valor2) {
-        return valor1 - valor2;
-    }
-
-    public static double multiplicacion(double valor1, double valor2) {
-        return valor1 * valor2;
-    }
-
-    public static double division(double valor1, double valor2) {
-        return valor1 / valor2;
+        scanner.close();
+        System.out.println("Calculadora terminada.");
     }
 }
