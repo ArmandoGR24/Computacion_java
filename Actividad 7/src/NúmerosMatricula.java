@@ -5,13 +5,16 @@ public class NúmerosMatricula {
     private static int num;
 
     public static void main(String[] args) {
+
+        //Con While
         System.out.println("Numeros en While");
         int i = 0;
         while (i <= 100) {
             System.out.println(i);
             i++;
         }
-
+        
+        //Con Do-While
         do {
             System.out.println("Ingrese un numero mayor o igual a cero:");
             num = sc.nextInt();
@@ -19,14 +22,17 @@ public class NúmerosMatricula {
 
         System.out.println("El numero ingresado es: " + num);
 
+        //Con For
         System.out.println("Numeros en For");
         for (int j = 0; j <= 100; j++) {
             System.out.println(j);
         }
+        
 
         printNums();
     }
 
+    //Numeros divisibles entre 2 y 3
     public static void printNums() {
         System.out.println("Numeros divisibles entre 2 y 3");
         for (int i = 0; i <= 100; i++) {
