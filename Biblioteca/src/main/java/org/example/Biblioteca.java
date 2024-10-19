@@ -15,7 +15,6 @@ public class Biblioteca {
 
     public void addLibro(libros libro)
     {
-
         libros.add(libro);
     }
 
@@ -24,5 +23,18 @@ public class Biblioteca {
         return libros;
     }
 
+    public void drop_libros(int id)
+    {
+        for(libros libro_drop : getLibros())
+        {
+            if(libro_drop.getId() == id)
+            {
+                getLibros().remove(libro_drop);
+                break;
+            }
+        }
+        System.out.println("Libro eliminado correctamente");
+    }
 }
+
 

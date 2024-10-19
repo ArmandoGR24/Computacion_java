@@ -62,15 +62,7 @@ public class Main {
                     case 3:
                         System.out.print("Ingrese el ID del libro a eliminar: ");
                         int idEliminar = sc.nextInt();
-                        for(libros libro_drop : biblioteca.getLibros())
-                        {
-                            if(libro_drop.getId() == idEliminar)
-                            {
-                                biblioteca.getLibros().remove(libro_drop);
-                                break;
-                            }
-                        }
-                        System.out.println("Libro eliminado correctamente");
+                        biblioteca.drop_libros(idEliminar);
                         break;
 
                     case 4:
