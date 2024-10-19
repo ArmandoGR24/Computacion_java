@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,6 +20,18 @@ public class Biblioteca {
     public List<libros> getLibros()
     {
         return libros;
+    }
+
+    public void mostrar_libros()
+    {
+        for(libros libro : getLibros())
+        {
+            System.out.println("ID: " + libro.getId());
+            System.out.println("Título: " + libro.getTitulo());
+            System.out.println("Autor: " + libro.getAutor());
+            System.out.println("Año: " + libro.getAño());
+            System.out.println();
+        }
     }
 
     public void drop_libros(int id)

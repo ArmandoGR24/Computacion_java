@@ -15,13 +15,15 @@ public class Main {
         Biblioteca biblioteca = new Biblioteca();
 
         //Libros de mi biblioteca
-        libros libro1 = new libros(1, "El principito", "Antoine de Saint-Exupéry");
-        libros libro2 = new libros(2, "El arte de la guerra", "Sun Tzu");
-        libros libro3 = new libros(3, "El señor de los anillos", "J.R.R. Tolkien");
+        libros libro1 = new libros(1, "El principito", "Antoine de Saint-Exupéry", 1943);
+        libros libro2 = new libros(2, "Cien años de soledad", "Gabriel García Márquez", 1967);
+        libros libro3 = new libros(3, "Orgullo y prejuicio", "Jane Austen", 1813);
+        libros libro4 = new libros(4, "El señor de los anillos", "J.R.R. Tolkien", 1954);
 
         biblioteca.addLibro(libro1);
         biblioteca.addLibro(libro2);
         biblioteca.addLibro(libro3);
+        biblioteca.addLibro(libro4);
 
         try {
             while(seguir)
@@ -37,13 +39,7 @@ public class Main {
                 switch(opcion)
                 {
                     case 1:
-                        for(libros libro : biblioteca.getLibros())
-                        {
-                            System.out.println("ID: " + libro.getId());
-                            System.out.println("Título: " + libro.getTitulo());
-                            System.out.println("Autor: " + libro.getAutor());
-                            System.out.println();
-                        }
+                        biblioteca.mostrar_libros();
                         break;
                     case 2:
 
@@ -53,8 +49,10 @@ public class Main {
                         String titulo = sc.nextLine();
                         System.out.print("Ingrese el autor del libro: ");
                         String autor = sc.nextLine();
+                        System.out.print("Ingrese el año del libro: ");
+                        int año = sc.nextInt();
 
-                        libros libro_add = new libros(id, titulo, autor);
+                        libros libro_add = new libros(id, titulo, autor,año);
                         biblioteca.addLibro(libro_add);
                         System.out.println("Libro agregado correctamente");
 
